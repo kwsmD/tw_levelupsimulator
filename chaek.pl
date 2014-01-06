@@ -8,7 +8,10 @@ use POSIX;
 # ステータスの基本配列
 my    @statuslist = ('level','pont','stab','hack','int','def','mr','dex','agi');
 
+
 # @[キャラ名]_[タイプ]_[初期ステータスor初期ポイント]
+
+# マキシミンデータ----------------------------------------------------------
 
 # マキシ複合初期パラメータとポイント(ステータスの頭２つはレベルとポイントを記載)
 my    @maximin_complex_status = (1,0,4,4,1,2,1,2,1);
@@ -22,8 +25,11 @@ my    @maximin_sword_point = (2,1,3,2,3,1,2);
 my    @maximin_magic_status = (1,0,2,4,2,2,2,2,1);
 my    @maximin_magic_point = (3,1,2,3,2,1,2);
 
+# ----------------------------------------------------------
 
-# 使用キャラの指定
+
+# 使用キャラの指定_後で指定できるようにする
+# マキシミン・斬りステ指定(強制)
  my @character =  @maximin_complex_status;
  my @charapoint=  @maximin_sword_point;
  my $defapoint;
@@ -41,14 +47,6 @@ my    @maximin_magic_point = (3,1,2,3,2,1,2);
 #   $needpoint[6]   =   @charapoint[4] + ( (@character[6] * 5 ) + $level ) % 125
 #   $needpoint[7]   =   @charapoint[5] + ( (@character[7] * 5 ) + $level ) % 125
 #   $needpoint[8]   =   @charapoint[6] + ( (@character[8] * 5 ) + $level ) % 125
-
-
-
-#　メモ：あとで消す
-# my @character =  @maximin_complex_status;
-# my @charapoint=  @maximin_sword_point;
-
-
 
 
 for my $i(1..30){
