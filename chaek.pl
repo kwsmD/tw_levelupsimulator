@@ -30,7 +30,7 @@ my    @maximin_magic_point = (3,1,2,3,2,1,2);
 
 # 使用キャラの指定_後で指定できるようにする
 # マキシミン・斬りステ指定(強制)
- my @character =  @maximin_complex_status;
+ my @character =  @maximin_sword_status;
  my @charapoint=  @maximin_sword_point;
  my $defapoint;
  my $needpoint;
@@ -63,12 +63,30 @@ for my $i(1..255){
 
             $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
             # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
-            print "needpoint:","$needpoint\n";
-
+            print "1stneedpoint:","$needpoint\n";
+ 
                 if( $character[1] - $needpoint > 0 && $character[3] < 255){
-                        $character[3] = $character[3] + int( $character[1] / $needpoint);
-                        $character[1] =  ( $character[1] - $needpoint);
+                            $character[3] = $character[3] + 1;
+                          $character[1] =  ( $character[1] - $needpoint);
                  }
+            
+            $needpoint = floor( $charapoint[1] + (( $character[3] * 5 ) + $character[0] ) / 125);
+            print "2ndneedpoint:","$needpoint\n";
+            
+                if( $character[1] - $needpoint > -1 && $character[3] < 255){
+                        $character[3] = $character[3] + 1;
+                        $character[1] = ( $character[1] - $needpoint);
+                  }
+              
+            $needpoint = floor( $charapoint[1] + (( $character[3] * 5 ) + $character[0] ) / 125);
+            print "3rdneedpoint:","$needpoint\n";
+            
+                if( $character[1] - $needpoint > -1 && $character[3] < 255){
+                        $character[3] = $character[3] + 1;
+                        $character[1] = ( $character[1] - $needpoint);
+                  }
+
+
                print "Level:"."$character[0]\n"."Point:"."$character[1]\n"."Hack:","$character[3]\n"."\n";
         }
 
@@ -79,13 +97,30 @@ for my $i(1..255){
             # レベルアップ処理とポイントの付与処理
 
             $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
-            # ステータスアップの必要ポイント計算(ここでは$character[3]=hack)を直接入れている
-            print "needpoint:","$needpoint\n";
-
+            # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
+            print "1stneedpoint:","$needpoint\n";
+ 
                 if( $character[1] - $needpoint > 0 && $character[3] < 255){
-                        $character[3] = $character[3] +     int( $character[1] / $needpoint);
-                        $character[1] =  ( $character[1] - $needpoint);
-                }
+                            $character[3] = $character[3] + 1;
+                          $character[1] =  ( $character[1] - $needpoint);
+                 }
+            
+            $needpoint = floor( $charapoint[1] + (( $character[3] * 5 ) + $character[0] ) / 125);
+            print "2ndneedpoint:","$needpoint\n";
+            
+                if( $character[1] - $needpoint > -1 && $character[3] < 255){
+                        $character[3] = $character[3] + 1;
+                        $character[1] = ( $character[1] - $needpoint);
+                  }
+              
+            $needpoint = floor( $charapoint[1] + (( $character[3] * 5 ) + $character[0] ) / 125);
+            print "3rdneedpoint:","$needpoint\n";
+            
+                if( $character[1] - $needpoint > -1 && $character[3] < 255){
+                        $character[3] = $character[3] + 1;
+                        $character[1] = ( $character[1] - $needpoint);
+                  }
+
                print "Level:"."$character[0]\n"."Point:"."$character[1]\n"."Hack:","$character[3]\n"."\n";
 
         }
