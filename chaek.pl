@@ -49,6 +49,11 @@ my    @maximin_magic_point = (3,1,2,3,2,1,2);
 #   $needpoint[8]   =   @charapoint[6] + ( (@character[8] * 5 ) + $level ) % 125
 
 
+
+
+
+
+
 for my $i(1..255){
 
 #    my $levelup = <STDIN>;
@@ -61,6 +66,17 @@ for my $i(1..255){
             $character[1] = $character[1] + 2;
             # レベルアップ処理とポイントの付与処理
             
+            my $rand = rand();
+            my $method;
+
+            if( $character[7] < 255){
+             $character[7] = $character[7] + 1;
+         }
+            if($rand < 0.5){
+                $character[8] = $character[8] +1 ;
+            }
+
+
             for my $p(1..4){
             $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
             # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
@@ -82,6 +98,16 @@ for my $i(1..255){
             $character[1] = $character[1] + 3;
             # レベルアップ処理とポイントの付与処理
 
+            my $rand = rand();
+            my $method;
+            
+            if( $character[7] < 255){
+             $character[7] = $character[7] + 1;
+         }
+            if($rand < 0.5){
+                $character[8] = $character[8] +1 ;
+            }
+
             for my $p(1..4){
             $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
             # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
@@ -101,6 +127,16 @@ for my $i(1..255){
             $character[0] = $character[0] + 1;
             $character[1] = $character[1] + 4;
             # レベルアップ処理とポイントの付与処理
+
+            my $rand = rand();
+            my $method;
+            
+            if( $character[7] < 255){
+             $character[7] = $character[7] + 1;
+         }
+            if($rand < 0.5){
+                $character[8] = $character[8] +1 ;
+            }
 
            for my $p(1..4){
             $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
@@ -122,6 +158,16 @@ for my $i(1..255){
             $character[1] = $character[1] + 5;
              # レベルアップ処理とポイントの付与処理
 
+            my $rand = rand();
+            my $method;
+            
+            if( $character[7] < 255){
+             $character[7] = $character[7] + 1;
+         }
+            if($rand < 0.5){
+                $character[8] = $character[8] +1 ;
+            }
+
            for my $p(1..4){
             $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
             # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
@@ -141,6 +187,16 @@ for my $i(1..255){
             $character[0] = $character[0] + 1;
             $character[1] = $character[1] + 6   ;
                # レベルアップ処理とポイントの付与処理
+
+            my $rand = rand();
+            my $method;
+            
+            if( $character[7] < 255){
+             $character[7] = $character[7] + 1;
+         }
+            if($rand < 0.5){
+                $character[8] = $character[8] +1 ;
+            }
 
            for my $p(1..4){
             $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
@@ -162,6 +218,16 @@ for my $i(1..255){
             $character[1] = $character[1] + 7;
             # レベルアップ処理とポイントの付与処理
 
+            my $rand = rand();
+            my $method;
+            
+            if( $character[7] < 255){
+             $character[7] = $character[7] + 1;
+         }
+            if($rand < 0.5){
+                $character[8] = $character[8] +1 ;
+            }
+
             for my $p(1..4){
             $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
             # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
@@ -180,6 +246,16 @@ for my $i(1..255){
             $character[0] = $character[0] + 1;
             $character[1] = $character[1] + 8;
             # レベルアップ処理とポイントの付与処理
+
+            my $rand = rand();
+            my $method;
+            
+            if( $character[7] < 255){
+             $character[7] = $character[7] + 1;
+         }
+            if($rand < 0.5){
+                $character[8] = $character[8] +1 ;
+            }
 
            for my $p(1..4){
             $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
@@ -200,6 +276,16 @@ for my $i(1..255){
             $character[0] = $character[0] + 1;
             $character[1] = $character[1] + 9;
             # レベルアップ処理とポイントの付与処理
+
+            my $rand = rand();
+            my $method;
+            
+            if( $character[7] < 255){
+             $character[7] = $character[7] + 1;
+         }
+            if($rand < 0.5){
+                $character[8] = $character[8] +1 ;
+            }
 
            for my $p(1..4){
             $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
