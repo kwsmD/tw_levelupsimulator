@@ -57,9 +57,96 @@
 my $upstatase = <STDIN>;
 
 
+#先行指定処理
+     sub auto_bouns{
+
+                my $rand = rand();
+                my $method;
+
+                if ($ upstatase == 1){
+                                 if( $character[7] < 255){
+                                                $character[7] = $character[7] + 1;
+                                            }
+                                        if($rand < 0.5){
+                                                $character[4] = $character[4] +1 ;
+                                    }
+                            }
+                     elsif ($ upstatase == 2){
+                                 if( $character[4] < 255){
+                                                $character[4] = $character[4] + 1;
+                                            }
+                                        if($rand < 0.5){
+                                                $character[6] = $character[6] +1 ;
+                                      }   
+                            }
+                     elsif ($ upstatase == 3){
+                                 if( $character[7] < 255){
+                                                $character[7] = $character[7] + 1;
+                                            }
+                                        if($rand < 0.5){
+                                                $character[8] = $character[8] +1 ;
+                                     }   
+                            }
+                    elsif ($ upstatase == 4){
+                                 if( $character[2] < 255){
+                                                $character[2] = $character[2] + 1;
+                                            }
+                                        if($rand < 0.5){
+                                                $character[7] = $character[7] +1 ;
+                                      }   
+                            }
+                    elsif ($ upstatase == 5){
+                                 if( $character[3] < 255){
+                                                $character[3] = $character[3] + 1;
+                                            }
+                                        if($rand < 0.5){
+                                                $character[5] = $character[5] +1 ;
+                                       }   
+                            }            
 
 
-    for my $i(1..255){
+     }
+
+
+# ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
+    sub point_up_loop{
+
+          for my $p(1..4){
+                $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
+
+    
+                    if( $character[1] - $needpoint > -1 && $character[3] < 255){
+                                        print "needpoint:","$needpoint\n";
+                                $character[3] = $character[3] + 1;
+                              $character[1] =  ( $character[1] - $needpoint);
+                     }
+                
+                }
+        }
+
+
+#
+    sub check_all_status{
+
+                print "Level:","$character[0]\n";
+                print "Pont:","$character[1]\n";
+                print "Stab:","$character[2]\n";
+                print "Hack:","$character[3]\n";
+                print "Int:","$character[4]\n";
+                print "Def:","$character[5]\n";
+                print "Mr:","$character[6]\n";
+                print "Dex:","$character[7]\n";
+                print "Agi:","$character[8]\n";
+                print "$needpoint\n";
+
+    }
+
+
+
+
+
+
+    for my $i(1..50){
 
     #    my $levelup = <STDIN>;
         my $levelup = 1;
@@ -73,67 +160,15 @@ my $upstatase = <STDIN>;
                 $character[1] = $character[1] + 2;
                 # レベルアップ処理とポイントの付与処理
                 
-                my $rand = rand();
-                my $method;
+               &auto_bouns($upstatase);
+               #先行処理の呼び出し  
 
+               &point_up_loop();
+               #ポイントを振る処理呼び出し
 
-                #先行指定処理
-                if ($ upstatase == 1){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[4] = $character[4] +1 ;
-                                            }
-                            }
-                     elsif ($ upstatase == 2){
-                                 if( $character[4] < 255){
-                                                $character[4] = $character[4] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[6] = $character[6] +1 ;
-                                            }   
-                            }
-                     elsif ($ upstatase == 3){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[8] = $character[8] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 4){
-                                 if( $character[2] < 255){
-                                                $character[2] = $character[2] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[7] = $character[7] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 5){
-                                 if( $character[3] < 255){
-                                                $character[3] = $character[3] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[5] = $character[5] +1 ;
-                                            }   
-                            }            
+               &check_all_status();
+                #確認用のステータス表示
 
-
-
-                for my $p(1..4){
-                $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
-                # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
-                print "needpoint:","$needpoint\n";
-     
-                    if( $character[1] - $needpoint > -1 && $character[3] < 255){
-                                $character[3] = $character[3] + 1;
-                              $character[1] =  ( $character[1] - $needpoint);
-                     }
-                
-                }
-
-                   print "Level:"."$character[0]\n"."Point:"."$character[1]\n"."Hack:","$character[3]\n"."\n";
             }
 
 
@@ -143,65 +178,16 @@ my $upstatase = <STDIN>;
                 $character[1] = $character[1] + 3;
                 # レベルアップ処理とポイントの付与処理
 
-                my $rand = rand();
-                my $method;
-                
-                 #先行指定処理
-                if ($ upstatase == 1){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[4] = $character[4] +1 ;
-                                            }
-                            }
-                     elsif ($ upstatase == 2){
-                                 if( $character[4] < 255){
-                                                $character[4] = $character[4] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[6] = $character[6] +1 ;
-                                            }   
-                            }
-                     elsif ($ upstatase == 3){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[8] = $character[8] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 4){
-                                 if( $character[2] < 255){
-                                                $character[2] = $character[2] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[7] = $character[7] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 5){
-                                 if( $character[3] < 255){
-                                                $character[3] = $character[3] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[5] = $character[5] +1 ;
-                                            }   
-                            }            
+               &auto_bouns($upstatase);
+               #先行処理の呼び出し  
+
+               &point_up_loop();
+               #ポイントを振る処理呼び出し
+
+               &check_all_status();
+                #確認用のステータス表示
 
 
-                for my $p(1..4){
-                $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
-                # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
-                print "needpoint:","$needpoint\n";
-     
-                    if( $character[1] - $needpoint > -1 && $character[3] < 255){
-                                $character[3] = $character[3] + 1;
-                              $character[1] =  ( $character[1] - $needpoint);
-                     }
-                
-                }
-
-                   print "Level:"."$character[0]\n"."Point:"."$character[1]\n"."Hack:","$character[3]\n"."\n";
             }
 
 # Lv48以下の場合-------------------------------------------------------------------------------
@@ -210,65 +196,15 @@ my $upstatase = <STDIN>;
                 $character[1] = $character[1] + 4;
                 # レベルアップ処理とポイントの付与処理
 
-                my $rand = rand();
-                my $method;
+               &auto_bouns($upstatase);
+               #先行処理の呼び出し  
 
-                #先行指定処理
-                if ($ upstatase == 1){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[4] = $character[4] +1 ;
-                                            }
-                            }
-                     elsif ($ upstatase == 2){
-                                 if( $character[4] < 255){
-                                                $character[4] = $character[4] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[6] = $character[6] +1 ;
-                                            }   
-                            }
-                     elsif ($ upstatase == 3){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[8] = $character[8] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 4){
-                                 if( $character[2] < 255){
-                                                $character[2] = $character[2] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[7] = $character[7] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 5){
-                                 if( $character[3] < 255){
-                                                $character[3] = $character[3] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[5] = $character[5] +1 ;
-                                            }   
-                            }            
+               &point_up_loop();
+               #ポイントを振る処理呼び出し
 
+               &check_all_status();
+                #確認用のステータス表示
 
-               for my $p(1..4){
-                $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
-                # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
-                print "needpoint:","$needpoint\n";
-     
-                    if( $character[1] - $needpoint > -1 && $character[3] < 255){
-                                $character[3] = $character[3] + 1;
-                              $character[1] =  ( $character[1] - $needpoint);
-                     }
-                
-                }
-
-                   print "Level:"."$character[0]\n"."Point:"."$character[1]\n"."Hack:","$character[3]\n"."\n";
             }
 
 # Lv80以下の場合-------------------------------------------------------------------------------
@@ -277,64 +213,14 @@ my $upstatase = <STDIN>;
                 $character[1] = $character[1] + 5;
                  # レベルアップ処理とポイントの付与処理
 
-                my $rand = rand();
-                my $method;
-                
-                             #先行指定処理
-                if ($ upstatase == 1){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[4] = $character[4] +1 ;
-                                            }
-                            }
-                     elsif ($ upstatase == 2){
-                                 if( $character[4] < 255){
-                                                $character[4] = $character[4] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[6] = $character[6] +1 ;
-                                            }   
-                            }
-                     elsif ($ upstatase == 3){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[8] = $character[8] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 4){
-                                 if( $character[2] < 255){
-                                                $character[2] = $character[2] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[7] = $character[7] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 5){
-                                 if( $character[3] < 255){
-                                                $character[3] = $character[3] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[5] = $character[5] +1 ;
-                                            }   
-                            }            
+               &auto_bouns($upstatase);
+               #先行処理の呼び出し  
 
-               for my $p(1..4){
-                $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
-                # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
-                print "needpoint:","$needpoint\n";
-     
-                    if( $character[1] - $needpoint > -1 && $character[3] < 255){
-                                $character[3] = $character[3] + 1;
-                              $character[1] =  ( $character[1] - $needpoint);
-                     }
-                
-                }
+               &point_up_loop();
+               #ポイントを振る処理呼び出し
 
-                   print "Level:"."$character[0]\n"."Point:"."$character[1]\n"."Hack:","$character[3]\n"."\n";
+               &check_all_status();
+                #確認用のステータス表示
             }
 
 # Lv129以下の場合-------------------------------------------------------------------------------
@@ -343,64 +229,14 @@ my $upstatase = <STDIN>;
                 $character[1] = $character[1] + 6   ;
                    # レベルアップ処理とポイントの付与処理
 
-                my $rand = rand();
-                my $method;
-                 #先行指定処理
-                if ($ upstatase == 1){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[4] = $character[4] +1 ;
-                                            }
-                            }
-                     elsif ($ upstatase == 2){
-                                 if( $character[4] < 255){
-                                                $character[4] = $character[4] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[6] = $character[6] +1 ;
-                                            }   
-                            }
-                     elsif ($ upstatase == 3){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[8] = $character[8] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 4){
-                                 if( $character[2] < 255){
-                                                $character[2] = $character[2] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[7] = $character[7] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 5){
-                                 if( $character[3] < 255){
-                                                $character[3] = $character[3] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[5] = $character[5] +1 ;
-                                            }   
-                            }            
+               &auto_bouns($upstatase);
+               #先行処理の呼び出し  
 
+               &point_up_loop();
+               #ポイントを振る処理呼び出し
 
-               for my $p(1..4){
-                $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
-                # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
-                print "needpoint:","$needpoint\n";
-     
-                    if( $character[1] - $needpoint > -1 && $character[3] < 255){
-                                $character[3] = $character[3] + 1;
-                              $character[1] =  ( $character[1] - $needpoint);
-                     }
-                
-                }
-
-                   print "Level:"."$character[0]\n"."Point:"."$character[1]\n"."Hack:","$character[3]\n"."\n";
+               &check_all_status();
+                #確認用のステータス表示
             }
 
 # Lv175以下の場合-------------------------------------------------------------------------------
@@ -409,66 +245,14 @@ my $upstatase = <STDIN>;
                 $character[1] = $character[1] + 7;
                 # レベルアップ処理とポイントの付与処理
 
-                my $rand = rand();
-                my $method;
+               &auto_bouns($upstatase);
+               #先行処理の呼び出し  
 
+               &point_up_loop();
+               #ポイントを振る処理呼び出し
 
-                #先行指定処理
-                if ($ upstatase == 1){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[4] = $character[4] +1 ;
-                                            }
-                            }
-                     elsif ($ upstatase == 2){
-                                 if( $character[4] < 255){
-                                                $character[4] = $character[4] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[6] = $character[6] +1 ;
-                                            }   
-                            }
-                     elsif ($ upstatase == 3){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[8] = $character[8] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 4){
-                                 if( $character[2] < 255){
-                                                $character[2] = $character[2] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[7] = $character[7] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 5){
-                                 if( $character[3] < 255){
-                                                $character[3] = $character[3] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[5] = $character[5] +1 ;
-                                            }   
-                            }            
-
-
-                for my $p(1..4){
-                $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
-                # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
-                print "needpoint:","$needpoint\n";
-     
-                    if( $character[1] - $needpoint > -1 && $character[3] < 255){
-                                $character[3] = $character[3] + 1;
-                              $character[1] =  ( $character[1] - $needpoint);
-                     }
-                
-                }
-
-                   print "Level:"."$character[0]\n"."Point:"."$character[1]\n"."Hack:","$character[3]\n"."\n";
+               &check_all_status();
+                #確認用のステータス表示
             }
 
 # Lv235以下の場合-------------------------------------------------------------------------------
@@ -477,62 +261,14 @@ my $upstatase = <STDIN>;
                 $character[1] = $character[1] + 8;
                 # レベルアップ処理とポイントの付与処理
 
-                my $rand = rand();
-                my $method;
-               if ($ upstatase == 1){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[4] = $character[4] +1 ;
-                                            }
-                            }
-                     elsif ($ upstatase == 2){
-                                 if( $character[4] < 255){
-                                                $character[4] = $character[4] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[6] = $character[6] +1 ;
-                                            }   
-                            }
-                     elsif ($ upstatase == 3){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[8] = $character[8] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 4){
-                                 if( $character[2] < 255){
-                                                $character[2] = $character[2] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[7] = $character[7] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 5){
-                                 if( $character[3] < 255){
-                                                $character[3] = $character[3] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[5] = $character[5] +1 ;
-                                            }   
-                            }            
+               &auto_bouns($upstatase);
+               #先行処理の呼び出し  
 
-               for my $p(1..4){
-                $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
-                # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
-                print "needpoint:","$needpoint\n";
-     
-                    if( $character[1] - $needpoint > -1 && $character[3] < 255){
-                                $character[3] = $character[3] + 1;
-                              $character[1] =  ( $character[1] - $needpoint);
-                     }
-                
-                }
+               &point_up_loop();
+               #ポイントを振る処理呼び出し
 
-                   print "Level:"."$character[0]\n"."Point:"."$character[1]\n"."Hack:","$character[3]\n"."\n";
+               &check_all_status();
+                #確認用のステータス表示
             }
 
 # Lv255以下の場合-------------------------------------------------------------------------------
@@ -541,64 +277,14 @@ my $upstatase = <STDIN>;
                 $character[1] = $character[1] + 9;
                 # レベルアップ処理とポイントの付与処理
 
-                my $rand = rand();
-                my $method;
-                
+               &auto_bouns($upstatase);
+               #先行処理の呼び出し  
 
-              if ($ upstatase == 1){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[4] = $character[4] +1 ;
-                                            }
-                            }
-                     elsif ($ upstatase == 2){
-                                 if( $character[4] < 255){
-                                                $character[4] = $character[4] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[6] = $character[6] +1 ;
-                                            }   
-                            }
-                     elsif ($ upstatase == 3){
-                                 if( $character[7] < 255){
-                                                $character[7] = $character[7] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[8] = $character[8] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 4){
-                                 if( $character[2] < 255){
-                                                $character[2] = $character[2] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[7] = $character[7] +1 ;
-                                            }   
-                            }
-                    elsif ($ upstatase == 5){
-                                 if( $character[3] < 255){
-                                                $character[3] = $character[3] + 1;
-                                            }
-                                        if($rand < 0.5){
-                                                $character[5] = $character[5] +1 ;
-                                            }   
-                            }            
+               &point_up_loop();
+               #ポイントを振る処理呼び出し
 
-               for my $p(1..4){
-                $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
-                # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
-                print "needpoint:","$needpoint\n";
-     
-                    if( $character[1] - $needpoint > -1 && $character[3] < 255){
-                                $character[3] = $character[3] + 1;
-                              $character[1] =  ( $character[1] - $needpoint);
-                     }
-                
-                }
-
-                   print "Level:"."$character[0]\n"."Point:"."$character[1]\n"."Hack:","$character[3]\n"."\n";
+               &check_all_status();
+                #確認用のステータス表示
             }
         }
 
