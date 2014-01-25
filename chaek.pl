@@ -146,7 +146,7 @@ my $upstatase = <STDIN>;
 
 
 
-    for my $i(1..50){
+    for my $i(1..255){
 
     #    my $levelup = <STDIN>;
         my $levelup = 1;
