@@ -301,3 +301,4 @@ my $upstatase = <STDIN>;
                 print "Dex:","$character[7]\n";
                 print "Agi:","$character[8]\n";
                 print "$needpoint\n";
+
