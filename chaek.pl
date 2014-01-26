@@ -1,6 +1,7 @@
         use strict;
         use warnings;
         use POSIX;
+        use utf8;
 
 
         # charadeta
@@ -132,7 +133,9 @@
                                     $character[1] =  ( $character[1] - $needpoint);
                                 }
                                  else {
-                                print "not point!!!\n";  
+                                    print "not point...\n";
+                                    last;
+
                             }    
                          }
                          elsif( $up_status_point == 2 ){
@@ -145,7 +148,9 @@
                                     $character[1] =  ( $character[1] - $needpoint);
                                 }
                                 else {
-                                print "not point!!!\n";  
+
+                                    print "not point...\n";
+                                    last;
                             }    
                          }
                           elsif( $up_status_point == 3 ){
@@ -158,7 +163,8 @@
                                     $character[1] =  ( $character[1] - $needpoint);
                                 }
                                 else {
-                                print "not point!!!\n";  
+                                    print "not point...\n";
+                                    last;
                             }    
                          }
                           elsif( $up_status_point == 4 ){
@@ -171,7 +177,8 @@
                                     $character[1] =  ( $character[1] - $needpoint);
                                 }
                                 else {
-                                print "not point!!!\n";  
+                                    print "not point...\n";
+                                    last;
                             }    
                          }
                           elsif( $up_status_point == 5 ){
@@ -184,7 +191,8 @@
                                     $character[1] =  ( $character[1] - $needpoint);
                                 }
                                 else {
-                                print "not point!!!\n";  
+                                    print "not point...\n";
+                                    last;
                             }    
                          }
                           elsif( $up_status_point == 6 ){
@@ -198,7 +206,7 @@
                                 }
 
                                 else {
-                                print "not point!!!\n";  
+                                                                    last;  
                             }    
                          }
                           elsif( $up_status_point == 7 ){
@@ -211,12 +219,13 @@
                                     $character[1] =  ( $character[1] - $needpoint);
                                 }
                                 else {
-                                print "not point!!!\n";  
+                                                                    last;  
                             }    
                     
                         }
 
                          else {
+                                last;
                                 print "END!!!\n";  
                             }     
 
