@@ -56,7 +56,6 @@
 
     #先行指定処理
          sub auto_bouns{
-
                     my $rand = rand();
                     my $method;
 
@@ -112,7 +111,7 @@
          }
 
 
-    # ステータスアップの必要ポイント計算(ここでは仮に$character[3]=hack)を直接入れている
+    # ステータスアップの必要ポイント計算
         sub point_up_loop{
 
               for my $p(1..4){
@@ -134,7 +133,6 @@
                                 }
                                  else {
                                     print "not point...\n";
-                                    last;
 
                             }    
                          }
@@ -150,7 +148,6 @@
                                 else {
 
                                     print "not point...\n";
-                                    last;
                             }    
                          }
                           elsif( $up_status_point == 3 ){
@@ -164,7 +161,6 @@
                                 }
                                 else {
                                     print "not point...\n";
-                                    last;
                             }    
                          }
                           elsif( $up_status_point == 4 ){
@@ -227,8 +223,7 @@
                          else {
                                 last;
                                 print "END!!!\n";  
-                            }     
-
+                            }    
             }
     }
     
@@ -244,7 +239,6 @@
                     print "Mr:","$character[6]\n";
                     print "Dex:","$character[7]\n";
                     print "Agi:","$character[8]\n";
-                    print "$needpoint\n";
 
         }
 
@@ -255,11 +249,27 @@
 
         for my $i(1..20){
 
-        #    my $levelup = <STDIN>;
-            my $levelup = 1;
+#    print "auto_bouns_settings:";
+#
+#    my $auto_bouns_settings = <STDIN>;
+#
+#    if( $auto_bouns_settings == 1 ){
+#
+#           &auto_bouns();
+#
+#    }
+#    else{
+#        last;
+#    }
+
+
+
+
+    print "levelup:";
+       my $levelup = <STDIN>;
+ #           my $levelup = 1;
 
             if( $levelup == 1){
-
 
     # Lv6以下の場合-------------------------------------------------------------------------------
                 if( $character[0] < 6){
