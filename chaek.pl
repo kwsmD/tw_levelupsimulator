@@ -264,7 +264,6 @@
 
 
 
-
     print "levelup:";
        my $levelup = <STDIN>;
  #           my $levelup = 1;
@@ -276,7 +275,7 @@
                     $character[0] = $character[0] + 1;
                     $character[1] = $character[1] + 2;
                     # レベルアップ処理とポイントの付与処理
-                    
+
                    &auto_bouns($upstatase);
                    #先行処理の呼び出し  
 
@@ -403,6 +402,11 @@
                    &check_all_status();
                     #確認用のステータス表示
                 }
+            }else{
+
+                print "upstatase in id:\n";
+                $upstatase = <STDIN>;
+
             }
 
         }
