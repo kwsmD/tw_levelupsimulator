@@ -2,7 +2,8 @@
         use warnings;
         use POSIX;
         use utf8;
-
+        binmode STDIN,  ":encoding(cp932)";
+        binmode STDOUT, ":encoding(cp932)";
 
         # charadeta
 
@@ -40,17 +41,14 @@
 
         # 初期必要POINT +［（ステ値 × 5 ）＋ LV ］÷ 125
 
-        # 必要 POINT 計算式(配列形式)
-        #   $needpoint[2]   =   @charapoint[0] + ( (@character[2] * 5 ) + $level ) % 125
-        #   $needpoint[3]   =   @charapoint[1] + ( (@character[3] * 5 ) + $level ) % 125
-        #   $needpoint[4]   =   @charapoint[2] + ( (@character[4] * 5 ) + $level ) % 125
-        #   $needpoint[5]   =   @charapoint[3] + ( (@character[5] * 5 ) + $level ) % 125
-        #   $needpoint[6]   =   @charapoint[4] + ( (@character[6] * 5 ) + $level ) % 125
-        #   $needpoint[7]   =   @charapoint[5] + ( (@character[7] * 5 ) + $level ) % 125
-        #   $needpoint[8]   =   @charapoint[6] + ( (@character[8] * 5 ) + $level ) % 125
 
 
-    print "upstatase in id:\n";
+    print "先行指定:\n";
+    print "1.風(DEX/INT)  \n";
+    print "2.雷(INT/MR)   \n";
+    print "3.共(DEX/AGI)  \n";
+    print "4.剣(STAB/DEX) \n";
+    print "5.刀(HACK/DEF) \n";
     my $upstatase = <STDIN>;
 
 
@@ -119,7 +117,8 @@
                     #配列で一気に更新したほうがいいいか？
 
         #    @statuslist = ('level','pont','stab','hack','int','def','mr','dex','agi');
-                    print "sutatus up id:\n";
+                    print "上げるステータス指定\n";
+                    print "1.stab/2.hack/3.int/4.def/5.mr/6.dex/7.agi\n";
                     my $up_status_point = <STDIN>;
 
                         if( $up_status_point == 1 ){
@@ -127,12 +126,14 @@
                              $needpoint  =  floor( $charapoint[0] + ( ($character[2] * 5 ) + $character[0] ) / 125);
 
                                   if( $character[1] - $needpoint > -1 && $character[2] < 255){
-                                            print "needpoint:","$needpoint\n";
+                                    print  "$character[2]","から";
                                     $character[2] = $character[2] + 1;
                                     $character[1] =  ( $character[1] - $needpoint);
+                                    print  "$character[2]","にアップ\n\n";
                                 }
                                  else {
-                                    print "not point...\n";
+                                    print "ポイントが足りません\n";
+                                    last;
 
                             }    
                          }
@@ -141,13 +142,15 @@
                               $needpoint  =  floor( $charapoint[1] + ( ($character[3] * 5 ) + $character[0] ) / 125);
 
                                   if( $character[1] - $needpoint > -1 && $character[3] < 255){
-                                            print "needpoint:","$needpoint\n";
+                                    print  "$character[3]","から";
                                     $character[3] = $character[3] + 1;
                                     $character[1] =  ( $character[1] - $needpoint);
+                                    print  "$character[3]","にアップ\n\n";
                                 }
                                 else {
 
-                                    print "not point...\n";
+                                    print "ポイントが足りません\n";
+                                    last;
                             }    
                          }
                           elsif( $up_status_point == 3 ){
@@ -155,12 +158,14 @@
                               $needpoint  =  floor( $charapoint[2] + ( ($character[4] * 5 ) + $character[0] ) / 125);
 
                                   if( $character[1] - $needpoint > -1 && $character[4] < 255){
-                                            print "needpoint:","$needpoint\n";
+                                    print  "$character[4]","から";
                                     $character[4] = $character[4] + 1;
                                     $character[1] =  ( $character[1] - $needpoint);
+                                     print  "$character[4]","にアップ\n\n";
                                 }
                                 else {
-                                    print "not point...\n";
+                                    print "ポイントが足りません\n";
+                                    last;
                             }    
                          }
                           elsif( $up_status_point == 4 ){
@@ -168,12 +173,13 @@
                               $needpoint  =  floor( $charapoint[3] + ( ($character[5] * 5 ) + $character[0] ) / 125);
 
                                   if( $character[1] - $needpoint > -1 && $character[5] < 255){
-                                            print "needpoint:","$needpoint\n";
+                                    print  "$character[5]","から";
                                     $character[5] = $character[5] + 1;
                                     $character[1] =  ( $character[1] - $needpoint);
+                                    print  "$character[5]","にアップ\n\n";
                                 }
                                 else {
-                                    print "not point...\n";
+                                    print "ポイントが足りません\n";
                                     last;
                             }    
                          }
@@ -182,12 +188,13 @@
                                 $needpoint  =  floor( $charapoint[4] + ( ($character[6] * 5 ) + $character[0] ) / 125);
 
                                   if( $character[1] - $needpoint > -1 && $character[6] < 255){
-                                            print "needpoint:","$needpoint\n";
+                                    print  "$character[5]","から";
                                     $character[6] = $character[6] + 1;
                                     $character[1] =  ( $character[1] - $needpoint);
+                                    print  "$character[6]","にアップ\n\n";
                                 }
                                 else {
-                                    print "not point...\n";
+                                    print "ポイントが足りません\n";
                                     last;
                             }    
                          }
@@ -196,13 +203,15 @@
                               $needpoint  =  floor( $charapoint[5] + ( ($character[7] * 5 ) + $character[0] ) / 125);
 
                                   if( $character[1] - $needpoint > -1 && $character[7] < 255){
-                                            print "needpoint:","$needpoint\n";
+                                    print  "$character[5]","から";
                                     $character[7] = $character[7] + 1;
                                     $character[1] =  ( $character[1] - $needpoint);
+                                    print  "$character[7]","にアップ\n\n";
                                 }
 
                                 else {
-                                                                    last;  
+                                    print "ポイントが足りません\n";
+                                    last;
                             }    
                          }
                           elsif( $up_status_point == 7 ){
@@ -210,13 +219,15 @@
                               $needpoint  =  floor( $charapoint[6] + ( ($character[8] * 5 ) + $character[0] ) / 125);
 
                                   if( $character[1] - $needpoint > -1 && $character[8] < 255){
-                                            print "needpoint:","$needpoint\n";
+                                    print  "$character[5]","から";
                                     $character[8] = $character[8] + 1;
                                     $character[1] =  ( $character[1] - $needpoint);
+                                    print  "$character[8]","にアップ\n\n";
                                 }
                                 else {
-                                                                    last;  
-                            }    
+                                    print "ポイントが足りません\n";
+                                    last;
+                            }       
                     
                         }
 
@@ -239,6 +250,7 @@
                     print "Mr:","$character[6]\n";
                     print "Dex:","$character[7]\n";
                     print "Agi:","$character[8]\n";
+                    print "\n";
 
         }
 
@@ -249,23 +261,11 @@
 
         for my $i(1..20){
 
-#    print "auto_bouns_settings:";
-#
-#    my $auto_bouns_settings = <STDIN>;
-#
-#    if( $auto_bouns_settings == 1 ){
-#
-#           &auto_bouns();
-#
-#    }
-#    else{
-#        last;
-#    }
-
-
-
-    print "levelup:";
-       my $levelup = <STDIN>;
+    print "行動選択:\n";
+    print "1.レベルアップ\n";
+    print "2.先行変更:\n";
+    print "3.終了:\n";
+       my $levelup  = <STDIN>;
  #           my $levelup = 1;
 
             if( $levelup == 1){
@@ -402,11 +402,19 @@
                    &check_all_status();
                     #確認用のステータス表示
                 }
-            }else{
+            }elsif( $levelup == 2){
 
-                print "upstatase in id:\n";
-                $upstatase = <STDIN>;
+                print "先行指定 id:\n";
+                print "1.風(DEX/INT)  \n";
+                print "2.雷(INT/MR)   \n";
+                print "3.共(DEX/AGI)  \n";
+                print "4.剣(STAB/DEX) \n";
+                print "5.刀(HACK/DEF) \n";
+                my  $upstatase = <STDIN>;
 
+            }
+            else{
+                last;
             }
 
         }
@@ -421,4 +429,5 @@
                     print "Mr:","$character[6]\n";
                     print "Dex:","$character[7]\n";
                     print "Agi:","$character[8]\n";
+                    print "\n";
 
