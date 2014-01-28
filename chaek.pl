@@ -132,7 +132,7 @@
                                     print  "$character[2]","にアップ\n\n";
                                 }
                                  else {
-                                    print "ポイントが足りません\n";
+                                    print "ポイントが足りません\n\n";
                                     last;
 
                             }    
@@ -149,7 +149,7 @@
                                 }
                                 else {
 
-                                    print "ポイントが足りません\n";
+                                    print "ポイントが足りません\n\n";
                                     last;
                             }    
                          }
@@ -164,7 +164,7 @@
                                      print  "$character[4]","にアップ\n\n";
                                 }
                                 else {
-                                    print "ポイントが足りません\n";
+                                    print "ポイントが足りません\n\n";
                                     last;
                             }    
                          }
@@ -179,7 +179,7 @@
                                     print  "$character[5]","にアップ\n\n";
                                 }
                                 else {
-                                    print "ポイントが足りません\n";
+                                    print "ポイントが足りません\n\n";
                                     last;
                             }    
                          }
@@ -194,7 +194,7 @@
                                     print  "$character[6]","にアップ\n\n";
                                 }
                                 else {
-                                    print "ポイントが足りません\n";
+                                    print "ポイントが足りません\n\n";
                                     last;
                             }    
                          }
@@ -210,7 +210,7 @@
                                 }
 
                                 else {
-                                    print "ポイントが足りません\n";
+                                    print "ポイントが足りません\n\n";
                                     last;
                             }    
                          }
@@ -225,7 +225,7 @@
                                     print  "$character[8]","にアップ\n\n";
                                 }
                                 else {
-                                    print "ポイントが足りません\n";
+                                    print "ポイントが足りません\n\n";
                                     last;
                             }       
                     
@@ -404,7 +404,7 @@
                 }
             }elsif( $levelup == 2){
 
-                print "先行指定 id:\n";
+                print "先行指定\n";
                 print "1.風(DEX/INT)  \n";
                 print "2.雷(INT/MR)   \n";
                 print "3.共(DEX/AGI)  \n";
