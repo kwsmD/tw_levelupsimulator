@@ -261,7 +261,7 @@
 
         for my $i(1..20){
 
-    print "行動選択:\n";
+    print "\n行動選択:\n";
     print "1.レベルアップ\n";
     print "2.先行変更:\n";
     print "3.終了:\n";
